@@ -7,8 +7,8 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class ResponseTest extends BaseDomainTest {
-    private Response response = new Response(
+public class OfferResponseTest extends BaseDomainTest {
+    private OfferResponse offerResponse = new OfferResponse(
             "OK",
             "Ok",
             2,
@@ -53,8 +53,8 @@ public class ResponseTest extends BaseDomainTest {
 
     @Test
     public void testParsedResponse() {
-        Response response = gson.fromJson(mockedJson, Response.class);
-        TestCase.assertNotNull(response);
-        TestCase.assertEquals(gson.toJson(this.response), gson.toJson(response));
+        OfferResponse offerResponse = gson.fromJson(mockedJson, OfferResponse.class);
+        TestCase.assertNotNull(offerResponse);
+        TestCase.assertEquals(gson.toJson(this.offerResponse), gson.toJson(offerResponse));
     }
 }

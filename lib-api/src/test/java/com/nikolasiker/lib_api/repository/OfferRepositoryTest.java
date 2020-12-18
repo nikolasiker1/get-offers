@@ -5,7 +5,7 @@ import com.nikolasiker.lib_api.ImmediateRxSchedulersOverrideRule;
 import com.nikolasiker.lib_api.model.Information;
 import com.nikolasiker.lib_api.model.Offer;
 import com.nikolasiker.lib_api.model.OfferType;
-import com.nikolasiker.lib_api.model.Response;
+import com.nikolasiker.lib_api.model.OfferResponse;
 import com.nikolasiker.lib_api.model.Thumbnail;
 import com.nikolasiker.lib_api.service.OfferService;
 
@@ -24,7 +24,7 @@ public class OfferRepositoryTest {
     private OfferRepository offerRepository;
     private OfferService offerService;
 
-    private Response response = new Response(
+    private OfferResponse offerResponse = new OfferResponse(
             "OK",
             "Ok",
             2,
@@ -73,7 +73,7 @@ public class OfferRepositoryTest {
 
     @Test
     public void shouldReturnSuccessResponse() {
-        Mockito.when(offerService.getOffers(Mockito.any())).thenReturn(Single.just(response));
+        Mockito.when(offerService.getOffers(Mockito.any())).thenReturn(Single.just(offerResponse));
 
         offerRepository.getOffers(
                 new OfferRepository.OfferParameters("testFormat", "testAppId", "testUid")
@@ -81,7 +81,7 @@ public class OfferRepositoryTest {
                 .test()
                 .assertSubscribed()
                 .assertNoErrors()
-                .assertValue(response)
+                .assertValue(offerResponse)
                 .assertComplete();
     }
 

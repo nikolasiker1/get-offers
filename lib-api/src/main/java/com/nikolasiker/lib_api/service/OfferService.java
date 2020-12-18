@@ -1,6 +1,6 @@
 package com.nikolasiker.lib_api.service;
 
-import com.nikolasiker.lib_api.model.Response;
+import com.nikolasiker.lib_api.model.OfferResponse;
 
 import java.util.Map;
 
@@ -10,5 +10,5 @@ import retrofit2.http.QueryMap;
 
 public interface OfferService {
     @GET("feed/v1/offers.json")
-    Single<Response> getOffers(@QueryMap Map<String, String> options);
+    Single<OfferResponse> getOffers(@QueryMap Map<String, String> options);
 }

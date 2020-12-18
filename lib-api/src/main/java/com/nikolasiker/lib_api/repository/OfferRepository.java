@@ -3,7 +3,7 @@ package com.nikolasiker.lib_api.repository;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-import com.nikolasiker.lib_api.model.Response;
+import com.nikolasiker.lib_api.model.OfferResponse;
 import com.nikolasiker.lib_api.service.OfferService;
 
 import java.util.Map;
@@ -23,7 +23,7 @@ public class OfferRepository {
         this.gson = gson;
     }
 
-    public Single<Response> getOffers(OfferParameters offerParameters) {
+    public Single<OfferResponse> getOffers(OfferParameters offerParameters) {
         return offerService
                 .getOffers(convertParametersToMap(offerParameters))
                 .subscribeOn(Schedulers.io());

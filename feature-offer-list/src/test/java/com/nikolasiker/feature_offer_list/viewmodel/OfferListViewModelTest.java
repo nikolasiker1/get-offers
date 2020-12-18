@@ -11,7 +11,7 @@ import com.nikolasiker.lib_api.di.ApiInjector;
 import com.nikolasiker.lib_api.model.Information;
 import com.nikolasiker.lib_api.model.Offer;
 import com.nikolasiker.lib_api.model.OfferType;
-import com.nikolasiker.lib_api.model.Response;
+import com.nikolasiker.lib_api.model.OfferResponse;
 import com.nikolasiker.lib_api.model.Thumbnail;
 import com.nikolasiker.lib_api.repository.OfferRepository;
 import com.nikolasiker.lib_api.service.OfferService;
@@ -44,7 +44,7 @@ public class OfferListViewModelTest {
 
     private Observer observer;
 
-    private Response response = new Response(
+    private OfferResponse offerResponse = new OfferResponse(
             "OK",
             "Ok",
             2,
@@ -95,11 +95,11 @@ public class OfferListViewModelTest {
 
     @Test
     public void shouldReturnSuccessResponse() {
-        Mockito.when(offerService.getOffers(Mockito.any())).thenReturn(Single.just(response));
+        Mockito.when(offerService.getOffers(Mockito.any())).thenReturn(Single.just(offerResponse));
         offerListViewModel.getOffers(new OfferRepository.OfferParameters("test", "test", "test"));
         ApiResponse<List<Offer>> apiResponse = offerListViewModel.getOfferLiveData().getValue();
         TestCase.assertNotNull(apiResponse);
-        TestCase.assertEquals(response.getOffers().size(), ((ApiResponse.Success<List<Offer>>) apiResponse).getData().size());
+        TestCase.assertEquals(offerResponse.getOffers().size(), ((ApiResponse.Success<List<Offer>>) apiResponse).getData().size());
     }
 
     @Test
@@ -113,7 +113,7 @@ public class OfferListViewModelTest {
 
     @Test
     public void shouldReturnApiErrorResponse() {
-        Response failResponse = new Response(
+        OfferResponse failOfferResponse = new OfferResponse(
                 "401",
                 "ERROR_INVALID_HASHKEY",
                 2,
@@ -150,7 +150,7 @@ public class OfferListViewModelTest {
                                         new OfferType("testPayout1", "testTimeToPayout1")
                                 )
                         )));
-        Mockito.when(offerService.getOffers(Mockito.any())).thenReturn(Single.just(failResponse));
+        Mockito.when(offerService.getOffers(Mockito.any())).thenReturn(Single.just(failOfferResponse));
         offerListViewModel.getOffers(new OfferRepository.OfferParameters("test", "test", "test"));
         ApiResponse<List<Offer>> apiResponse = offerListViewModel.getOfferLiveData().getValue();
         TestCase.assertNotNull(apiResponse);

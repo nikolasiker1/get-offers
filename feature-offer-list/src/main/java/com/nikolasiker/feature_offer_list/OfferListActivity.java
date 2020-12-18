@@ -11,21 +11,15 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.Gson;
 import com.nikolasiker.feature_offer_list.common.Constants;
 import com.nikolasiker.feature_offer_list.recycler.OfferListAdapter;
 import com.nikolasiker.feature_offer_list.viewmodel.OfferListViewModel;
 import com.nikolasiker.feature_offer_list.viewmodel.OfferViewModelFactory;
 import com.nikolasiker.lib_api.api.ApiResponse;
 import com.nikolasiker.lib_api.api.CoreApi;
-import com.nikolasiker.lib_api.model.Information;
 import com.nikolasiker.lib_api.model.Offer;
-import com.nikolasiker.lib_api.model.OfferType;
-import com.nikolasiker.lib_api.model.Response;
-import com.nikolasiker.lib_api.model.Thumbnail;
 import com.nikolasiker.lib_api.repository.OfferRepository;
 
-import java.util.Arrays;
 import java.util.List;
 
 //1c915e3b5d42d05136185030892fbb846c278927 api key

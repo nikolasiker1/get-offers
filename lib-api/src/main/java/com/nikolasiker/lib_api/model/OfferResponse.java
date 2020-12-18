@@ -2,17 +2,14 @@ package com.nikolasiker.lib_api.model;
 
 import java.util.List;
 
-public class Response {
-    private String code;
-    private String message;
+public class OfferResponse extends BaseResponse {
     private int count;
     private int pages;
     private Information information;
     private List<Offer> offers;
 
-    public Response(String code, String message, int count, int pages, Information information, List<Offer> offers) {
-        this.code = code;
-        this.message = message;
+    public OfferResponse(String code, String message, int count, int pages, Information information, List<Offer> offers) {
+        super(code, message);
         this.count = count;
         this.pages = pages;
         this.information = information;
