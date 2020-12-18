@@ -24,7 +24,6 @@ public class OfferRepository {
     }
 
     public Single<Response> getOffers(OfferParameters offerParameters) {
-        System.out.println(convertParametersToMap(offerParameters) + " " + offerParameters.getTimestamp());
         return offerService
                 .getOffers(convertParametersToMap(offerParameters))
                 .subscribeOn(Schedulers.io());
