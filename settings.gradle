@@ -1,0 +1,4 @@
+include ':feature-offer-list'
+include ':lib-api'
+include ':app'
+rootProject.name = "GetOffers"
